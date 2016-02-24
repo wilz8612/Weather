@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0508F03A-1A22-465C-A008-7A73DED39A52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Web", "Weather.Web\Weather.Web.csproj", "{1615FB82-9E86-4517-9094-A6C9D83A892A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Web.Tests", "Weather.Web.Tests\Weather.Web.Tests.csproj", "{CD5306A7-2364-4846-B163-E8DDC2367A26}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1615FB82-9E86-4517-9094-A6C9D83A892A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1615FB82-9E86-4517-9094-A6C9D83A892A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1615FB82-9E86-4517-9094-A6C9D83A892A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1615FB82-9E86-4517-9094-A6C9D83A892A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD5306A7-2364-4846-B163-E8DDC2367A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD5306A7-2364-4846-B163-E8DDC2367A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD5306A7-2364-4846-B163-E8DDC2367A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD5306A7-2364-4846-B163-E8DDC2367A26}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
