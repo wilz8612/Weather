@@ -7,6 +7,6 @@ namespace Weather.Web.Models
 {
     public class User
     {
-        private string _b;
+        private string a;
     }
 }
