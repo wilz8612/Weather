@@ -1,0 +1,14 @@
+﻿<configuration xmlns="http://schemas.techcreate.net/ax/2009/configuration">
+	<service>
+		<runtime>
+			<jobs>
+				<add name="ServiceSessionCleaner" handler="App.Services.ServiceRuntime.CleanSessions" interval="0:0:30" />
+			</jobs>
+		</runtime>
+	</service>
+	<data>
+		<sources>
+			<add name="default" provider="App.Data.MySqlClient.MySqlProvider" log="False" connectionString="Server=localhost;Database=test;user=root;password=x5;convert zero datetime=true;old guids=true;" />
+		</sources>
+	</data>
+</configuration>

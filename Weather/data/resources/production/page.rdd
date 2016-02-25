@@ -1,0 +1,112 @@
+﻿<Domains>
+	<Domain NamePath="App">
+		<Directory NamePath="App.Resources.Windows.PageInfo">
+			<Resource>
+				<Name>
+					<Invariant>Desktop</Invariant>
+					<zh-CN>桌面</zh-CN>
+				</Name>
+				<Url>/DesktopPage</Url>
+				<Order>100</Order>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
+				<Name>
+					<Invariant>Settings</Invariant>
+					<zh-CN>设置</zh-CN>
+				</Name>
+				<Order>5000</Order>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Settings.'" />
+				<Name>
+					<Invariant>User</Invariant>
+					<zh-CN>用户</zh-CN>
+				</Name>
+				<Url>App/Windows/Settings/UserPage, App.Windows</Url>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Settings.'" />
+				<Name>
+					<Invariant>Role</Invariant>
+					<zh-CN>角色</zh-CN>
+				</Name>
+				<Url>App/Windows/Settings/RolePage, App.Windows</Url>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Settings.'" />
+				<Name>
+					<Invariant>Log</Invariant>
+					<zh-CN>日志</zh-CN>
+				</Name>
+				<Url>App/Windows/Settings/LogPage, App.Windows</Url>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Settings.'" />
+				<Name>
+					<Invariant>Permissions</Invariant>
+					<zh-CN>权限</zh-CN>
+				</Name>
+				<Url>App/Windows/Settings/PermissionPage, App.Windows</Url>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Settings.'" />
+				<Name>
+					<Invariant>Parameters</Invariant>
+					<zh-CN>参数</zh-CN>
+				</Name>
+				<Url>App/Windows/Settings/ParametersPage, App.Windows</Url>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Settings.'" />
+				<Name>
+					<Invariant>Server</Invariant>
+					<zh-CN>服务器</zh-CN>
+				</Name>
+				<Url>App/Windows/Settings/ServerPage, App.Windows</Url>
+			</Resource>
+
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
+				<Name>
+					<Invariant>Help</Invariant>
+					<zh-CN>帮助</zh-CN>
+				</Name>
+				<Order>7000</Order>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Help.'" />
+				<Name>
+					<Invariant>Database Schema</Invariant>
+					<zh-CN>数据库结构</zh-CN>
+				</Name>
+				<Url>App/Windows/Help/DbSchemaPage, App.Windows</Url>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath.GetValue('', false) == '.Desktop.Help.'" />
+				<Name>
+					<Invariant>About</Invariant>
+					<zh-CN>关于</zh-CN>
+				</Name>
+				<ClickHandler>ShowAbout</ClickHandler>
+			</Resource>
+
+			<Resource>
+				<Name>
+					<Invariant>Change Password</Invariant>
+					<zh-CN>修改密码</zh-CN>
+				</Name>
+				<Order>99999</Order>
+				<ClickHandler>ChangePassword</ClickHandler>
+			</Resource>
+			<Resource>
+				<Name>
+					<Invariant>Sign Out</Invariant>
+					<zh-CN>退出</zh-CN>
+				</Name>
+				<Order>99999</Order>
+				<ClickHandler>SignOut</ClickHandler>
+			</Resource>
+		</Directory>
+	</Domain>
+</Domains>

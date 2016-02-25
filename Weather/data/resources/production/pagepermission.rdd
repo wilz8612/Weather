@@ -1,0 +1,23 @@
+﻿<Resources>
+	<!-- everyone -->
+	<Resource Type="App.Resources.Windows.PageInfoPermission">
+		<Res where="NamePath.GetValue('', false) == '.Desktop.'" />
+		<UK query="from App.Resources.Role where NamePath == '.everyone.' select Key" />
+	</Resource>
+	<Resource Type="App.Resources.Windows.PageInfoPermission">
+		<Res where="NamePath.GetValue('', false) == '.Desktop.Help.'" />
+		<UK query="from App.Resources.Role where NamePath == '.everyone.' select Key" />
+	</Resource>
+	<Resource Type="App.Resources.Windows.PageInfoPermission">
+		<Res where="NamePath.GetValue('', false) == '.Desktop.Help.About.'" />
+		<UK query="from App.Resources.Role where NamePath == '.everyone.' select Key" />
+	</Resource>
+	<Resource Type="App.Resources.Windows.PageInfoPermission">
+		<Res where="NamePath.GetValue('', false) == '.Change Password.'" />
+		<UK query="from App.Resources.Role where NamePath == '.everyone.' select Key" />
+	</Resource>
+	<Resource Type="App.Resources.Windows.PageInfoPermission">
+		<Res where="NamePath.GetValue('', false) == '.Sign Out.'" />
+		<UK query="from App.Resources.Role where NamePath == '.everyone.' select Key" />
+	</Resource>
+</Resources>

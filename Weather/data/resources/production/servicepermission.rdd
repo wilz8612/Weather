@@ -1,0 +1,6 @@
+﻿<Resources>
+	<Resource Type="App.Resources.ServiceInfoPermission">
+		<Res where="Name == 'App.Services.ResourceService'" />
+		<UK query="from App.Resources.Role where NamePath == '.everyone.' select Key" />
+	</Resource>
+</Resources>

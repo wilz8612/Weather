@@ -216,7 +216,12 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Weather.Services\Weather.Services.csproj">
+      <Project>{88706a43-0544-4444-aab9-f798eb90679f}</Project>
+      <Name>Weather.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

@@ -1,0 +1,39 @@
+﻿<Domains>
+	<Domain NamePath="App">
+		<Directory NamePath="App.Resources.Role">
+			<Resource>
+				<Name>everyone</Name>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath == '.everyone.'" />
+				<Name>system</Name>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath == '.everyone.'" />
+				<Name>administrators</Name>
+			</Resource>
+			<Resource>
+				<Parent where="NamePath == '.everyone.'" />
+				<Name>guests</Name>
+			</Resource>
+		</Directory>
+		<Directory NamePath="App.Resources.User">
+			<Resource>
+				<Roles where="NamePath.In('.everyone.', '.everyone.system.')" />
+				<Name>system</Name>
+				<IsInteractive>False</IsInteractive>
+			</Resource>
+			<Resource>
+				<Roles where="NamePath.In('.everyone.', '.everyone.administrators.')" />
+				<Name>administrator</Name>
+				<Password>administrator</Password>
+			</Resource>
+			<Resource>
+				<Roles where="NamePath.In('.everyone.', '.everyone.guests.')" />
+				<Name>guest</Name>
+				<Password>guest</Password>
+				<IsActive>False</IsActive>
+			</Resource>
+		</Directory>
+	</Domain>
+</Domains>
