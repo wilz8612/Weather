@@ -246,3 +246,5 @@ _Pvt_Extensions
 # JetBrains Rider
 .idea/
 *.sln.iml
+/Weather/Weather.v11.suo
+/Weather/data/config/app.xml
