@@ -24,6 +24,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weather.Windows", "Silverli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data", "data\data.csproj", "{DA6D70F4-445B-44F2-8C25-25E436713327}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bin", "Bin", "{D714FD2E-7CD8-4EBB-8C53-A3DF866C117F}"
+	ProjectSection(SolutionItems) = preProject
+		Bin\App.Data.MySqlClient.dll = Bin\App.Data.MySqlClient.dll
+		Bin\App.dll = Bin\App.dll
+		Bin\App.Services.dll = Bin\App.Services.dll
+		Bin\MySql.Data.dll = Bin\MySql.Data.dll
+		Bin\tools.exe = Bin\tools.exe
+		Bin\tools.exe.config = Bin\tools.exe.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

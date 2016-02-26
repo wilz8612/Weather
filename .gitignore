@@ -248,3 +248,5 @@ _Pvt_Extensions
 *.sln.iml
 /Weather/Weather.v11.suo
 /Weather/data/config/app.xml
+/Weather/Bin/Weather.dll
+/Weather/Bin/Weather.Services.dll

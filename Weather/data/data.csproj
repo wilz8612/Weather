@@ -36,7 +36,9 @@
     <OutputPath>bin\test\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="config\app.xml" />
+    <None Include="config\app.xml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="resources\testing\" />
