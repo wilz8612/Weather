@@ -26,6 +26,7 @@ namespace Weather.Services
             using (DataContext dc = new DataContext())
             {
                 ResSet<User> r = dc.Select<User>();
+                
                 //dc.Commit();
                 return new object();
             }

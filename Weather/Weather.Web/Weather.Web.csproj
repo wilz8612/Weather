@@ -131,6 +131,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\readMe.txt" />
+    <Content Include="Content\frozen.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -188,6 +189,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\bg.jpg" />
+    <Content Include="Scripts\frozen.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -199,9 +202,11 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\zeptoEx.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\zepto.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

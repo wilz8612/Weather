@@ -114,9 +114,6 @@
     <Resource Include="Images\refresh.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Strings.resx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Weather.Services\Weather.Services.csproj">
       <Project>{463ED21F-C314-4869-9A1F-D2A602BE778E}</Project>
       <Name>Weather.Services %28Silverlight\Weather.Services%29</Name>

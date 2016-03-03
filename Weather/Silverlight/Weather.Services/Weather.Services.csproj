@@ -70,11 +70,6 @@
       <Name>Weather %28Silverlight\Weather%29</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\Weather.Services\Strings.resx">
-      <Link>Strings.resx</Link>
-    </EmbeddedResource>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

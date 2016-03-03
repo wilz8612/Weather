@@ -4,31 +4,104 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="zh-CN">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
-
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <title>天气颜值</title>
+    <style>
+        body {
+            font-family: STSong, Arial, Helvetica, sans-serif;
+            /*此部分支持chrome，应该也支持firefox*/
+            background: url(/Images/bg.jpg);
+            padding-top: 20px;
+            /*background: url(/Images/bg.jpg) no-repeat center fixed;*/
+            /*background-attachment: fixed;
+            background-size: 100% 100%;*/
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+        .fontColor {
+            color: white;
+        }
+
+        .imgColor {
+            color: white;
+            font-size: 14px;
+        }
+
+        .hotbt {
+            background: rgba(0,0,0,0.2)!important;
+            background: #000;
+            /*filter: Alpha(opacity=20);*/
+            padding: 5px;
+            margin: 5px;
+            border-radius: 20px 20px 20px 20px;
+            color: #FFFFFF;
+        }
+
+        .hotbd {
+            border: 1px solid #fbaeab;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            background: rgba(0,0,0,0.2)!important;
+            background: #000;
+            /*filter: alpha(opacity=50);*/
+            /*opacity: 0.5;*/
+            border-radius: 100px;
+            /*border: solid rgb(100,100,100) 1px;*/
+        }
+    </style>
 </head>
 <body>
-    <div>
-        <input type="button" id="test" value="测试" />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-6">
+                <a>
+                    <span class="glyphicon glyphicon-map-marker imgColor"></span>
+                    <span class="fontColor">北京</span>
+                    <span class="glyphicon glyphicon-chevron-down imgColor"></span></a>
+            </div>
+            <div class="col-xs-6">
+                <dl style="float: right;" class="imgColor">
+                    <dt class="hotbt">
+                        <span class="glyphicon glyphicon-leaf" style="font-size: 14px; color: red; margin: 3px; position: relative;"></span><span style="">严重污染</span></dt>
+                    <dt class="hotbt"><span class="glyphicon glyphicon-cloud" style="font-size: 14px; color: #FFFF00; margin: 3px;"></span><span>霾预警</span></dt>
+                </dl>
+
+            </div>
+        </div>
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-xs-12">
+                <div class="circle center-block">
+                    <dl class="imgColor text-center" style="position: relative; top: 50%; transform: translateY(-50%);">
+                        <dt><span class="h1" style="margin: 3px;">13</span>℃</dt>
+                        <dt><span class="h2" style="margin: 3px;"></span>霾</dt>
+                        <dt><span class="h4" style="margin: 3px;"></span>湿度45%</dt>
+                    </dl>
+
+
+                </div>
+            </div>
+
+        </div>
     </div>
 </body>
 </html>
-<script src="~/Scripts/jquery-1.7.1.min.js"></script>
-<script>
 
-    $(function () {
 
-        $("#test").click(function () {
-            $.post("/Home/Test", { "condition": "CES" },
-              function (data) {
-                  alert(1);
-              });
-        });
-    });
-</script>
+

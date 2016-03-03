@@ -24,7 +24,7 @@ namespace Weather.Web.Controllers
         /// <returns></returns>
         public ActionResult Test(string condition)
         {
-
+            string r = WeatherAPIService.GetWeatherData();
             return Json(CommonService.Test());
         }
 
