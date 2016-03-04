@@ -12,13 +12,16 @@
     <meta http-equiv="expires" content="0" />
     <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link href="~/Content/lxcss.css" rel="stylesheet" />
     <title>天气颜值</title>
     <style>
         body {
-            font-family: STSong, Arial, Helvetica, sans-serif;
+            font-family: "微软雅黑" Arial, Helvetica, sans-serif;
             /*此部分支持chrome，应该也支持firefox*/
             background: url(/Images/bg.jpg);
             padding-top: 20px;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
             /*background: url(/Images/bg.jpg) no-repeat center fixed;*/
             /*background-attachment: fixed;
             background-size: 100% 100%;*/
@@ -32,21 +35,35 @@
                 text-decoration: none;
             }
 
-        .fontColor {
+        .fontwhiter {
             color: white;
-        }
-
-        .imgColor {
-            color: white;
-            font-size: 14px;
         }
 
         .hotbt {
-            background: rgba(0,0,0,0.2)!important;
+            background: rgba(17, 34, 204,0.5)!important;
+            background: #000;
+        }
+
+        .hotbt10 {
+            background: rgba(0,0,0,0.3)!important;
             background: #000;
             /*filter: Alpha(opacity=20);*/
-            padding: 5px;
-            margin: 5px;
+            border-radius: 20px 20px 20px 20px;
+            color: #FFFFFF;
+        }
+
+        .hotbt20 {
+            background: rgba(0,0,0,0.3)!important;
+            background: #000;
+            /*filter: Alpha(opacity=20);*/
+            border-radius: 20px 20px 20px 20px;
+            color: #FFFFFF;
+        }
+
+        .hotbt30 {
+            background: rgba(0,0,0,0.3)!important;
+            background: #000;
+            /*filter: Alpha(opacity=20);*/
             border-radius: 20px 20px 20px 20px;
             color: #FFFFFF;
         }
@@ -58,12 +75,27 @@
         .circle {
             width: 200px;
             height: 200px;
-            background: rgba(0,0,0,0.2)!important;
+            background: rgba(0,0,0,0.1)!important;
             background: #000;
             /*filter: alpha(opacity=50);*/
             /*opacity: 0.5;*/
             border-radius: 100px;
             /*border: solid rgb(100,100,100) 1px;*/
+        }
+
+        .vectalgin {
+            position: relative;
+            top: 50%;
+            /*transform: translateY(-50%);*/
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        #canvas_circle {
+            position: absolute;
+            padding: 0px;
+            margin: 0px;
+            border: solid white 1px;
         }
     </style>
 </head>
@@ -72,15 +104,15 @@
         <div class="row">
             <div class="col-xs-6">
                 <a>
-                    <span class="glyphicon glyphicon-map-marker imgColor"></span>
-                    <span class="fontColor">北京</span>
-                    <span class="glyphicon glyphicon-chevron-down imgColor"></span></a>
+                    <span class="glyphicon glyphicon-map-marker fontwhiter"></span>
+                    <span class="fontwhiter">北京</span>
+                    <span class="fontwhiter">[更换]</span></a>
             </div>
             <div class="col-xs-6">
-                <dl style="float: right;" class="imgColor">
-                    <dt class="hotbt">
-                        <span class="glyphicon glyphicon-leaf" style="font-size: 14px; color: red; margin: 3px; position: relative;"></span><span style="">严重污染</span></dt>
-                    <dt class="hotbt"><span class="glyphicon glyphicon-cloud" style="font-size: 14px; color: #FFFF00; margin: 3px;"></span><span>霾预警</span></dt>
+                <dl style="float: right;" class="fontwhiter">
+                    <dt class="hotbt10 lx_pda5 lx_mga5">
+                        <span class="ion-leaf lx_fs18" style="color: red; margin: 3px;"></span><span style="">严重污染</span></dt>
+                    <dt class="hotbt10 lx_pda5 lx_mga5"><span class="glyphicon glyphicon-cloud" style="color: yellow; margin: 3px;"></span><span>霾预警</span></dt>
                 </dl>
 
             </div>
@@ -88,14 +120,60 @@
         <div class="row" style="margin-top: 50px;">
             <div class="col-xs-12">
                 <div class="circle center-block">
-                    <dl class="imgColor text-center" style="position: relative; top: 50%; transform: translateY(-50%);">
-                        <dt><span class="h1" style="margin: 3px;">13</span>℃</dt>
-                        <dt><span class="h2" style="margin: 3px;"></span>霾</dt>
-                        <dt><span class="h4" style="margin: 3px;"></span>湿度45%</dt>
+
+                    <dl class="fontwhiter text-center vectalgin">
+                        <dt><span class="h1">13</span>℃</dt>
+                        <dt><span class="h2"></span>霾</dt>
+                        <dt><span class="h4"></span>湿度45%</dt>
                     </dl>
 
-
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="center-block hotbt30 lx_fs10 lx_mglr30 lx_mgt5 text-center" style="width: auto;">
+                    <span id="tip">空气不太好，在室内休息休息吧</span>
+                </div>
+            </div>
+        </div>
+        <div class="row lx_mgt30 lx_bdt1 hotbt">
+            <div class="col-xs-12">
+                <div class="col-xs-6 lx_bdr1 lx_pda0">
+                    <div class="row">
+                        <div class="col-xs-9 lx_pda0">
+                            <dl class="fontwhiter lx_mgl5">
+                                <dt><span>今天</span></dt>
+                                <dt><span class="ion-ios-infinite-outline lx_fs24"></span><span class="ion-ios-moon lx_fs24 lx_mga5"></span><span>4/11℃</span></dt>
+                                <dt><span>霾转晴</span></dt>
+                            </dl>
+                        </div>
+                        <div class="col-xs-3">
+                            <span class="ion-leaf lx_mgt0 lx_mgr5 lx_fs24" style="color: red; float: right"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-9 lx_pda0">
+                            <dl class="fontwhiter lx_mgl5">
+                                <dt><span>明天</span></dt>
+                                <dt><span class="ion-ios-infinite-outline lx_fs24"></span><span class="ion-ios-moon lx_fs24 lx_mga5"></span><span>4/11℃</span></dt>
+                                <dt><span>霾转晴</span></dt>
+                            </dl>
+                        </div>
+                        <div class="col-xs-3">
+                            <span class="ion-leaf lx_mgt0 lx_mgr5 lx_fs24" style="color: red; float: right"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 lx_pda0">
+                <canvas id="canvas_circle" width="600" height="300">
+                    <p>Your browserdoes not support the canvas element!</p>
+                </canvas>
             </div>
 
         </div>
@@ -103,5 +181,116 @@
 </body>
 </html>
 
+<script type="text/javascript">
+    //温度转换成纵坐标
+    function transH(degree, max, min) {
+        var maxRange = max - min;
+        var distance = Math.floor(150 / maxRange);
+        return (max - degree) * distance + 100
+        // return 70 + (40 - degree) * 10;
+    }
 
+    //温度转换成纵坐标
+    function transL(degree, max, min) {
+        var maxRange = max - min;
+        var distance = Math.floor(150 / maxRange);
+        return 150 - ((degree - min) * distance) + 100;
+        // return 70 + (40 - degree) * 10;
+    }
+
+    //简单版绘制温度图表
+    function drawChart(canvasId, maxArr, minArr, dateArr, weekArr) {
+        var weekString = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
+        var pi2 = Math.PI * 2;
+        var canvas = document.getElementById("canvas_circle");
+        var c = canvas.getContext("2d");
+        c.font = "12px Times New Roman";
+        //设置背景渐变
+        var grd = c.createLinearGradient(0, 25, 0, 300);
+        grd.addColorStop(0, 'rgba(100,170,170,0.5)');
+        grd.addColorStop(0.5, 'rgba(125,170,170,0.5)');
+        grd.addColorStop(1, 'rgba(150,170,170,0.5)');
+        c.fillStyle = grd;
+        c.fillRect(0, 0, 600, 300);
+        //绘制文字
+        c.fillStyle = "#ffffff";
+        c.textAlign = "center";
+        //c.fillText("昨天", 50, 50);
+        //c.fillText("今天", 110, 50);
+        for (var i = 0; i < 6; i++) {
+            c.fillText(weekString[weekArr[i]], 50 + 60 * i, 50);
+        }
+        for (var i = 0; i < 6; i++) {
+            c.fillText(dateArr[i], 50 + 60 * i, 65);
+        }
+        //绘制最高温度
+        var maxHighTemp = maxNum(maxArr);
+        var minLowTemp = minNum(minArr);
+
+        c.moveTo(50, transH(maxArr[0], maxHighTemp, minLowTemp));
+        for (var i = 0; i < 6; i++) {
+            c.lineTo(50 + 60 * i, transH(maxArr[i], maxHighTemp, minLowTemp));
+        }
+        c.strokeStyle = "#ff4444";
+        c.stroke();
+        //绘制最低温度
+        c.beginPath();
+        c.moveTo(50, transL(minArr[0], maxHighTemp, minLowTemp));
+        for (var i = 0; i < 6; i++) {
+            c.lineTo(50 + 60 * i, transL(minArr[i], maxHighTemp, minLowTemp));
+        }
+        c.strokeStyle = "#4444ff";
+        c.stroke();
+        //绘制点
+        c.fillStyle = "ff4444";
+        c.beginPath();
+        for (var i = 0; i < 6; i++) {
+            c.moveTo(50 + 60 * i, transH(maxArr[i], maxHighTemp, minLowTemp));
+            c.arc(50 + 60 * i, transH(maxArr[i], maxHighTemp, minLowTemp), 3, 0, pi2);
+        }
+        c.fill();
+        c.beginPath();
+        c.fillStyle = "4444ff";
+        for (var i = 0; i < 6; i++) {
+            c.moveTo(50 + 60 * i, transL(minArr[i], maxHighTemp, minLowTemp));
+            c.arc(50 + 60 * i, transL(minArr[i], maxHighTemp, minLowTemp), 3, 0, pi2);
+        }
+        c.fill();
+    }
+    function init() {
+        var maxArr = [6, 5, 8, 10, 3, 9];//最高温度
+        var minArr = [-1, 0, 3, -2, -5, -3];//最低温低
+        var dateArr = ["5/27", "5/28", "5/29", "5/30", "5/31", "6/1", ];//日期
+        var weekArr = [5, 6, 0, 1, 2, 3, ];//星期
+        drawChart("canvas_circle", maxArr, minArr, dateArr, weekArr);
+    }
+    window.onload = init;
+
+    function maxNum(arr) {
+        var maxNum = 0;
+        if (arr.length) {
+            for (var i = 0, len = arr.length; i < len; i++) {
+                if (i == 0) {
+                    maxNum = arr[0];
+                } else if (maxNum < arr[i]) {
+                    maxNum = arr[i];
+                }
+            }
+        }
+        return maxNum;
+    }
+    function minNum(arr) {
+        var minNum = 0;
+        if (arr.length) {
+            for (var i = 0, len = arr.length; i < len; i++) {
+                if (i == 0) {
+                    minNum = arr[0];
+                } else if (minNum > arr[i]) {
+                    minNum = arr[i];
+                }
+            }
+        }
+        return minNum;
+    }
+</script>
 
