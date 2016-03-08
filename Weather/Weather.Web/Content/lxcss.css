@@ -263,6 +263,10 @@
 .lx_mgt30 {
     margin-top: 30px;
 }
+
+.lx_mgt60 {
+    margin-top: 60px;
+}
 /*下外距*/
 .lx_mgb0 {
     margin-bottom: 0px;
@@ -457,30 +461,42 @@
 }
 
 .lx_fs26 {
-    font-size: 24px;
+    font-size: 26px;
 }
 
 .lx_fs28 {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .lx_fs30 {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .lx_fs32 {
-    font-size: 24px;
+    font-size: 32px;
+}
+
+.lx_fs48 {
+    font-size: 48px;
+}
+
+.lx_fs64 {
+    font-size: 64px;
+}
+
+.lx_fs96 {
+    font-size: 96px;
 }
 
 
 /********边框*************/
 /*上边框*/
 .lx_bdt1 {
-    border-top: 1px solid #DDDDDD;
+    border-top: 1px solid rgba(255,255,255,0.3);
 }
 
 .lx_bdt2 {
-    border-top: 2px solid #DDDDDD;
+    border-top: 2px solid rgba(255,255,255,0.3);
 }
 
 .lx_bdt5 {
@@ -492,7 +508,7 @@
 }
 /*下边框*/
 .lx_bdb1 {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
 .lx_bdb2 {
@@ -524,7 +540,7 @@
 }
 /*右边框*/
 .lx_bdr1 {
-    border-right: 1px solid #DDDDDD;
+    border-right: 1px solid rgba(255,255,255,0.3);
 }
 
 .lx_bdr2 {
@@ -577,5 +593,3 @@
 .lx_with250 {
     width: 250px;
 }
-
-
