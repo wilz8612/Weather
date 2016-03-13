@@ -10,26 +10,27 @@ using System.Security.Cryptography;
 
 namespace Weather.Services
 {
-    public static class WeatherAPIService
+    public class WeatherAPIService
     {
         private const string Weaher_APIPath = "http://open.weather.com.cn/data/";
         private const string appid = "b173434a632aad58";
         private const string key = "weixinapp_webapi_data";
 
-        public static string GetWeatherData()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="areaId"></param>
+        /// <returns></returns>
+        public static WeatherModel GetWeatherData(string areaId = "101010100")
         {
             var enc = Encoding.UTF8;
+            var date = DateTime.Now.ToString("yyyyMMddHHmm");
             HMACSHA1 hmac = new HMACSHA1(enc.GetBytes(key));
             hmac.Initialize();
-            byte[] buffer = enc.GetBytes(Weaher_APIPath + "?areaid=101010100&type=forecast5d&date=201603021402&appid=" + appid);
+            byte[] buffer = enc.GetBytes(Weaher_APIPath + "?areaid=" + areaId + "&type=forecast5d&date=" + date + "&appid=" + appid);
             string k = System.Web.HttpUtility.UrlEncode(Convert.ToBase64String(hmac.ComputeHash(buffer)));
-
-            WebRequestConfig config = new WebRequestConfig()
-           {
-               ContentType = "text/xml;Charset=UTF-8",
-           };
-            string r = InfoLeader.Web.Request.WebRequestClient.Instance.SendGet(Weaher_APIPath + "?areaid=101010100&type=forecast5d&date=201603021402&appid=b17343" + "&key=" + k, config);
-            return r;
+            var m = HttpClientHelper.GetResponse<WeatherModel>(Weaher_APIPath + "?areaid=" + areaId + "&type=forecast5d&date=" + date + "&appid=" + appid.Substring(0, 6) + "&key=" + k);
+            return m;
         }
 
     }

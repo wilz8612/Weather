@@ -76,5 +76,40 @@ namespace Weather.Services {
 		public static void TestAsync(global::App.Services.ServiceConnection __serviceConnection, global::System.Action<global::App.Services.InvokeAsyncCompletedEventArgs<object>> callback) {
 			__serviceConnection.InvokeAsync<object>("Weather.Services.CommonService", "Test", callback);
 		}
+		
+		
+		public static string GetCityJsonStr() {
+			return GetCityJsonStr(global::App.Services.SC.Current);
+		}
+		
+		
+		public static string GetCityJsonStr(global::App.Services.ServiceConnection __serviceConnection) {
+			return __serviceConnection.Invoke<string>("Weather.Services.CommonService", "GetCityJsonStr", new global::System.Type[] {}, null);
+		}
+		
+		
+		public static void GetCityJsonStrAsync(global::System.Action<string> callback) {
+			GetCityJsonStrAsync(global::App.Services.SC.Current, callback);
+		}
+		
+		
+		public static void GetCityJsonStrAsync(global::App.Services.ServiceConnection __serviceConnection, global::System.Action<string> callback) {
+			__serviceConnection.InvokeAsync<string>("Weather.Services.CommonService", "GetCityJsonStr", callback);
+		}
+		
+		
+		public static void GetCityJsonStrAsync(global::App.Services.ServiceClient __serviceClient, global::System.Action<string> callback) {
+			__serviceClient.InvokeAsync<string>("Weather.Services.CommonService", "GetCityJsonStr", callback);
+		}
+		
+		
+		public static void GetCityJsonStrAsync(global::System.Action<global::App.Services.InvokeAsyncCompletedEventArgs<string>> callback) {
+			GetCityJsonStrAsync(global::App.Services.SC.Current, callback);
+		}
+		
+		
+		public static void GetCityJsonStrAsync(global::App.Services.ServiceConnection __serviceConnection, global::System.Action<global::App.Services.InvokeAsyncCompletedEventArgs<string>> callback) {
+			__serviceConnection.InvokeAsync<string>("Weather.Services.CommonService", "GetCityJsonStr", callback);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    
 }
 
 <!DOCTYPE html>
@@ -10,12 +11,11 @@
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
+    <link href="http://cdn.bootcss.com/FrozenUI/1.3.0/css/frozen-min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+
     <link href="~/Content/donghua.css" rel="stylesheet" />
-    <script src="~/Scripts/rasterizeHTML.allinone.js"></script>
-    <script src="~/Scripts/hidpi-canvas.min.js"></script>
-    <script src="~/Scripts/jquery-1.7.1.js"></script>
     <link href="~/Content/lxcss.css" rel="stylesheet" />
     <title>天气颜值</title>
     <style type="text/css">
@@ -37,6 +37,9 @@
             background-size: 100% 100%;*/
         }
 
+        .showBox {
+            display: -webkit-box;
+        }
 
         a {
             text-decoration: none;
@@ -86,7 +89,7 @@
         }
 
         .circle {
-            background: rgba(0,0,0,0.1)!important;
+            background: rgba(0,0,0,0.2)!important;
             background: #000;
             /*width: 400px;
             height: 400px;
@@ -124,15 +127,14 @@
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" style="position: relative;">
         <div id="midground" class="wall"></div>
         <div id="foreground" class="wall"></div>
-
         <div class="row">
             <div class="col-xs-6">
-                <a>
+                <a id="switchCity" href="###">
                     <span class="glyphicon glyphicon-map-marker fontwhiter"></span>
-                    <span class="fontwhiter">北京</span>
+                    <span id="city" class="fontwhiter">@ViewBag.CityName</span>
                     <span class="fontwhiter">[切换]</span></a>
             </div>
             <div class="col-xs-6">
@@ -140,7 +142,7 @@
                     <dt class="hotbt10 lx_pda5 lx_mga5">
                         <span class="ion-leaf lx_fs18" style="color: red; margin: 3px;"></span><span style="">严重污染</span></dt>
                     <dt class="hotbt10 lx_pda5 lx_mga5"><span class="glyphicon glyphicon-cloud" style="color: yellow; margin: 3px;"></span><span>霾预警</span></dt>
-                    <dt class="text-center"><span class="ion-social-snapchat" style="color:red; font-size: 48px;"></span></dt>
+                    <dt class="text-center"><span class="ion-social-snapchat" style="color: red; font-size: 48px;"></span></dt>
                 </dl>
 
             </div>
@@ -172,12 +174,12 @@
                         <div class="col-xs-9 lx_pda0">
                             <dl class="fontwhiter lx_mgl5">
                                 <dt><span>今天</span></dt>
-                                <dt><span class="ion-ios-infinite-outline lx_fs32 valgin"></span><span class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span class="valgin">4/11℃</span></dt>
-                                <dt><span>霾转晴</span></dt>
+                                <dt><span id="todayIcoAm" class="ion-ios-infinite-outline lx_fs32 valgin"></span><span id="todayIcoPm" class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span id="todayTmp" class="valgin">4/11℃</span></dt>
+                                <dt><span id="todyDesc">霾转晴</span></dt>
                             </dl>
                         </div>
                         <div class="col-xs-3">
-                            <span class="ion-leaf lx_mgt0 lx_mgr5 lx_fs32" style="color: red; float: right"></span>
+                            <span id="todayAir" class="ion-leaf lx_mgt0 lx_mgr5 lx_fs32" style="color: red; float: right"></span>
                         </div>
                     </div>
                 </div>
@@ -186,12 +188,12 @@
                         <div class="col-xs-9 lx_pda0">
                             <dl class="fontwhiter lx_mgl5">
                                 <dt><span>明天</span></dt>
-                                <dt><span class="ion-ios-infinite-outline lx_fs32 valgin"></span><span class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span class="valgin">4/11℃</span></dt>
-                                <dt><span>霾转晴</span></dt>
+                                <dt><span id="tomIcoAm" class="ion-ios-infinite-outline lx_fs32 valgin"></span><span id="tomIcoPm" class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span id="tomTmp" class="valgin">4/11℃</span></dt>
+                                <dt><span id="tomDesc">霾转晴</span></dt>
                             </dl>
                         </div>
                         <div class="col-xs-3">
-                            <span class="ion-leaf lx_mgt0 lx_fs32" style="color: red; float: right"></span>
+                            <span id="tomAir" class="ion-leaf lx_mgt0 lx_fs32" style="color: red; float: right"></span>
                         </div>
                     </div>
                 </div>
@@ -254,197 +256,229 @@
 
 
     </div>
+
+    @*<div class="modal fade" tabindex="-1" role="dialog" id="myCarDiv" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="H1">选择城市</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-10">
+                            <input type="text" id="txtCityName" placeholder="请输入城市名或拼音" />
+                        </div>
+                        <div class="col-xs-2"><a href="###">取消</a></div>
+                    </div>
+                    <div class="row">
+                        <div class="row lx_bdb1 lx_mgr0 lx_mgt5">
+                            <div class="col-xs-12"><span class="lx_mgl5">热门城市</span></div>
+                        </div>
+                        <div class="row lx_mgr0">
+                            <div class="col-xs-4 lx_bdr1 lx_bdb1">
+                                <span data-area="1010001">北京</span>
+                            </div>
+                            <div class="col-xs-4 lx_bdr1 lx_bdb1">
+                                <span data-area="1010001">北京</span>
+                            </div>
+                            <div class="col-xs-4  lx_bdb1">
+                                <span data-area="1010001">北京</span>
+                            </div>
+
+                        </div>
+                        <div class="row lx_mgr0">
+                            <div class="col-xs-4 lx_bdr1 text-center">
+                                <span data-area="1010001">北京</span>
+                            </div>
+                            <div class="col-xs-4 lx_bdr1">
+                                <span data-area="1010001">北京</span>
+                            </div>
+                            <div class="col-xs-4 ">
+                                <span data-area="1010001">北京</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
 </body>
 </html>
-
+<script src="/Scripts/zepto.min.js"></script>
+<script src="/Scripts/zeptoEx.js"></script>
+<script src="http://cdn.bootcss.com/FrozenUI/1.3.0/js/frozen.js"></script>
+<script src="/Scripts/weather.js"></script>
+<script src="/Scripts/cityList.js"></script>
 <script type="text/javascript">
-
+    //var useragent = navigator.userAgent;
+    //if (useragent.match(/MicroMessenger/i) != 'MicroMessenger') {
+    //    // 这里警告框会阻塞当前页面继续加载
+    //    alert('请使用微信客户端访问本页面！');
+    //    // 以下代码是用javascript强行关闭当前页面
+    //    var opened = window.open('about:blank', '_self');
+    //    opened.opener = null;
+    //    opened.close();
+    //}
+    window.onload = init;
     $(function () {
-
-        // 对浏览器的UserAgent进行正则匹配，不含有微信独有标识的则为其他浏览器
-        var useragent = navigator.userAgent;
-        if (useragent.match(/MicroMessenger/i) != 'MicroMessenger') {
-            // 这里警告框会阻塞当前页面继续加载
-            alert('请使用微信客户端访问本页面！');
-            // 以下代码是用javascript强行关闭当前页面
-            var opened = window.open('about:blank', '_self');
-            opened.opener = null;
-            opened.close();
-        }
         var h = window.innerWidth;
         $("#canvas_circle").css("width", h);
         $("#canvas_circle").css("height", 350);
-
         $(".circle").css("height", Math.floor(h / 2));
         $(".circle").css("width", Math.floor(h / 2));
         $(".circle").css("border-radius", (Math.floor(h / 2)) / 2);
+        //var el = $.zLoading({
+        //    content: '加载中...'
+        //});
 
-        init();
+        //setTimeout(function () {
+        //    el.zLoading("hide");
+        //}, 2000);
+
+        $('#switchCity').click(function () {
+
+            window.location.href = '@Url.Action("CitySelect", "Home")'
+            //   $('#myCarDiv').modal('show');
+
+            //$.loading({
+            //    content: '加载中...'
+            //});
+            //alert("测试");
+            // $.axse("/Home/City", {}, function (r) { alert("成功"); }, function (e) { alert("出错了"); });
+        });
+
+
+
     });
-    //温度转换成纵坐标
-    function transH(degree, max, min) {
-        var maxRange = (max - min);
-        var distance = Math.floor(150 / maxRange);
-        return (max - degree) * distance + 300
 
+    function getAreaID(cityname) {
+        for (var i = 0; i < cityList.length; i++) {
+            var item = cityList[i];
+            if (item.NameCn == cityname)
+                return item.AreaID;
+        }
     }
 
-    //温度转换成纵坐标
-    function transL(degree, max, min) {
-        var maxRange = (max - min);
-        var distance = Math.floor(150 / maxRange);
-        return 450 - ((degree - min) * distance);
-
-    }
-
-
-    //简单版绘制温度图表
-    function drawChart(canvasId, maxArr, minArr, dateArr, weekArr) {
-        var weekString = ["周一", "周二", "周三", "周四", "周五", "周六", "周日"];
-        var pi2 = Math.PI * 2;
-        var canvas = document.getElementById("canvas_circle");
-        canvas.width = window.innerWidth * 2;
-        canvas.height = 700;
-        var c = canvas.getContext("2d");
-        // c.globalCompositeOperation = 'source-atop';
-
-        c.font = "28px 微软雅黑";
-
-
-        //设置背景渐变
-        //var grd = c.createLinearGradient(0, 25, 0, 350);
-        //grd.addColorStop(0, 'rgba(17, 34, 204,0.5)');
-        //grd.addColorStop(0.5, 'rgba(17, 34, 204,0.5)');
-        //grd.addColorStop(1, 'rgba(17, 34, 204,0.5)');
-        //c.fillStyle = 'rgba(0,0,0,0.7)';
-        //c.fillRect(0, 0, canvas.width, 350);
-        //绘制文字
-        c.fillStyle = "#ffffff";
-        c.textAlign = "center";
-        var step = Math.floor(canvas.width / 6)
-        var x = Math.floor(step / 2);
-
-        //绘制星期
-        for (var i = 0; i < 6; i++) {
-            c.fillText(weekString[weekArr[i]], x + step * i, 50);
-        }
-        //绘制日期
-        for (var i = 0; i < 6; i++) {
-            c.fillText(dateArr[i], x + step * i, 90);
-        }
-
-        //画线
-        c.strokeStyle = "rgba(255,255,255,0.3)";
-        c.moveTo(x + step * 0.5, 25);
-        c.lineTo(x + step * 0.5, 700);
-        c.stroke();
-        c.beginPath();
-        for (var i = 1; i <= 4; i++) {
-            c.moveTo(x + step * 0.5 + step * i, 25);
-            c.lineTo(x + step * 0.5 + step * i, 700);
-            c.stroke();
-            c.beginPath();
-        }
-       
-
-        var s = new Array();
-        for (var i = 0; i < 6; i++) {
-            (function (i) {
-                s[i] = new Image();
-                s[i].src = "/Images/w0.png";
-                s[i].onload = function () { c.drawImage(s[i], x - (s[i].width / 4) + step * i, 120, 60, 60) };
-            })(i)
-        }
-
-        c.beginPath();
-        //绘制最高温度
-        var maxHighTemp = maxNum(maxArr);
-        var minLowTemp = minNum(minArr);
-
-        c.lineWidth = 4;
-        c.moveTo(x, transH(maxArr[0], maxHighTemp, minLowTemp));
-        for (var i = 0; i < 6; i++) {
-            var y = transH(maxArr[i], maxHighTemp, minLowTemp);
-            c.fillText(maxArr[i] + "℃", x + step * i, y - 12);
-            c.lineTo(x + step * i, y);
-        }
-        c.strokeStyle = "#ff4444";
-        c.stroke();
-        //绘制最低温度
-        c.beginPath();
-
-        c.lineWidth = 4;
-        c.moveTo(x, transL(minArr[0], maxHighTemp, minLowTemp));
-
-        for (var i = 0; i < 6; i++) {
-
-            var y = transL(minArr[i], maxHighTemp, minLowTemp);
-            c.fillText(minArr[i] + "℃", x + step * i, y + 30);
-            c.lineTo(x + step * i, y);
-        }
-
-        var m = new Array();
-        for (var i = 0; i < 6; i++) {
-            (function (i) {
-                m[i] = new Image();
-                m[i].src = "/Images/w30.png";
-                m[i].onload = function () { c.drawImage(m[i], x - (m[i].width / 4) + step * i, 550, 60, 60); };
-            })(i)
-        }
-        c.strokeStyle = "#d5d52b";
-        c.stroke();
-        //绘制点
-        c.fillStyle = "ff4444";
-        c.beginPath();
-        for (var i = 0; i < 6; i++) {
-            c.moveTo(x + step * i, transH(maxArr[i], maxHighTemp, minLowTemp));
-            c.arc(x + step * i, transH(maxArr[i], maxHighTemp, minLowTemp), 8, 0, pi2);
-        }
-        c.fill();
-        c.beginPath();
-        c.fillStyle = "#d5d52b";
-        for (var i = 0; i < 6; i++) {
-            c.moveTo(x + step * i, transL(minArr[i], maxHighTemp, minLowTemp));
-            c.arc(x + step * i, transL(minArr[i], maxHighTemp, minLowTemp), 8, 0, pi2);
-        }
-        c.fill();
-
-
-
-    }
     function init() {
-        var maxArr = [6, 5, 8, 10, 3, 9];//最高温度
-        var minArr = [-1, 0, 3, -2, -5, -3];//最低温低
-        var dateArr = ["5/27", "5/28", "5/29", "5/30", "5/31", "6/1", ];//日期
-        var weekArr = [5, 6, 0, 1, 2, 3, ];//星期
-        drawChart("canvas_circle", maxArr, minArr, dateArr, weekArr);
-    }
-    
-    function maxNum(arr) {
-        var maxNum = 0;
-        if (arr.length) {
-            for (var i = 0, len = arr.length; i < len; i++) {
-                if (i == 0) {
-                    maxNum = arr[0];
-                } else if (maxNum < arr[i]) {
-                    maxNum = arr[i];
+        var cityCode = "101010100";
+
+        var needlocation = '@ViewBag.NeedLocation';
+        if (needlocation == '1') {//需要定位
+            $("#city").text("定位中...");
+            getLocation.latAndLon(
+        function (data) {
+
+            //data包含经纬度信息
+            getLocation.cityname(data.latitude, data.longitude, function (datas) {
+                // alert(datas.cityname);
+                cityCode = getAreaID(datas.cityname.substring(0, datas.cityname.length - 1)); //str.substring(0, str.length - 1)
+                $("#city").text(datas.cityname);
+            });
+        },
+        function () {
+            getLocation.setDefaultCity(
+                function (defaultData) {
+                    //alert("设置默认城市成功");
+                    //设置默认城市
+                    $("#city").text(defaultData.cityname);
+
                 }
-            }
+            );
         }
-        return maxNum;
+    );
+        }
+        else {
+            cityCode = '@ViewBag.CityCode';
+            $("#city").text('@ViewBag.CityName');
+        }
+
+        var today = '@DateTime.Now.ToString("MM/dd")';
+        $.axse("/Home/QueryWeather", { "cityCode": cityCode },
+                    initWeather,
+                 function (e) { alert("出错了"); });
     }
-    function minNum(arr) {
-        var minNum = 0;
-        if (arr.length) {
-            for (var i = 0, len = arr.length; i < len; i++) {
-                if (i == 0) {
-                    minNum = arr[0];
-                } else if (minNum > arr[i]) {
-                    minNum = arr[i];
+
+
+
+    var initWeather = function (data) {
+
+        var dates = new Array();
+        var weeks = new Array();
+
+        dates.push('@DateTime.Now.ToString("MM/dd")');
+        weeks.push(transformWeek('@DateTime.Now.DayOfWeek.ToString()'));
+        dates.push('@DateTime.Now.AddDays(1).ToString("MM/dd")');
+        weeks.push(transformWeek('@DateTime.Now.AddDays(1).DayOfWeek.ToString()'));
+        dates.push('@DateTime.Now.AddDays(2).ToString("MM/dd")');
+        weeks.push(transformWeek('@DateTime.Now.AddDays(2).DayOfWeek.ToString()'));
+        dates.push('@DateTime.Now.AddDays(3).ToString("MM/dd")');
+        weeks.push(transformWeek('@DateTime.Now.AddDays(3).DayOfWeek.ToString()'));
+        dates.push('@DateTime.Now.AddDays(4).ToString("MM/dd")');
+        weeks.push(transformWeek('@DateTime.Now.AddDays(4).DayOfWeek.ToString()'));
+
+        var maxArr = new Array();
+        var minArr = new Array();
+        var sixw = new Array();
+
+        $.each(data.f.f1, function (index, item) {
+
+            if (index == 0)//今天
+            {
+                var wa = WeaherList.findSingle(item.fa);
+                var wp = WeaherList.findSingle(item.fb);
+                if (typeof (wa) == "undefined")//白天已过期
+                {
+                    $("#todyDesc").text(wp.cn);
+                    $("#todayTmp").text(item.fd + "℃");
                 }
+                else {
+                    if (wa.code == wp.code) {
+                        $("#todyDesc").text(wp.cn);
+                    }
+                    else {
+                        $("#todyDesc").text(wa.cn + "转" + wp.cn);
+                    }
+                    $("#todayTmp").text(item.fc + "/" + item.fd + "℃");
+                }
+
+
+
             }
-        }
-        return minNum;
+            else if (index == 1) {//明天
+                var wa = WeaherList.findSingle(item.fa);
+                var wp = WeaherList.findSingle(item.fb);
+
+                if (wa.code == wp.code) {
+                    $("#tomDesc").text(wp.cn);
+                }
+                else {
+                    $("#tomDesc").text(wa.cn + "转" + wp.cn);
+                }
+                $("#tomTmp").text(item.fc + "/" + item.fd + "℃");
+
+                //$("#tomDesc").text(wa.cn + wp.cn);
+                //$("#tomTmp").text(item.fc + "/" + item.fd + "℃");
+            }
+            if (item.fc == '') {
+                maxArr.push(0);
+            }
+            else {
+                maxArr.push(parseInt(item.fc));
+            }
+            if (item.fd == '') {
+                minArr.push(0);
+            }
+            else {
+
+                minArr.push(parseInt(item.fd));
+            }
+            sixw.push(item);
+        });
+
+        drawChart("canvas_circle", maxArr, minArr, dates, weeks, sixw);
     }
+
 </script>
 

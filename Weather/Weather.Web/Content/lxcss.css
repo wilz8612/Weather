@@ -495,8 +495,13 @@
     border-top: 1px solid rgba(255,255,255,0.3);
 }
 
+.lx_bdtb1 {
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+
 .lx_bdt2 {
-    border-top: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid rgba(255,255,255,0.1);
 }
 
 .lx_bdt5 {
@@ -510,6 +515,11 @@
 .lx_bdb1 {
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
+
+.lx_bdbb1 {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
 
 .lx_bdb2 {
     border-bottom: 2px solid;
@@ -541,6 +551,10 @@
 /*右边框*/
 .lx_bdr1 {
     border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+.lx_bdrb1 {
+    border-right: 1px solid rgba(0,0,0,0.1);
 }
 
 .lx_bdr2 {

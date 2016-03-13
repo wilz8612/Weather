@@ -36,16 +36,16 @@
 }
 
 #midground {
-    background: url('/Images/midground.png');
+    background: url('/Images/l2.png') ;
     z-index: -1;
-    -webkit-animation: STAR-MOVE 100s linear infinite;
-    -moz-animation: STAR-MOVE 100s linear infinite;
-    -ms-animation: STAR-MOVE 100s linear infinite;
+    -webkit-animation: STAR-MOVE 150s linear infinite;
+    -moz-animation: STAR-MOVE 150s linear infinite;
+    -ms-animation: STAR-MOVE 150s linear infinite;
     animation: STAR-MOVE 100s linear infinite;
 }
 
 #foreground {
-    background: url('/Images/foreground.png');
+    background: url('/Images/lyun.png');
     z-index: -2;
     -webkit-animation: STAR-MOVE 50s linear infinite;
     -moz-animation: STAR-MOVE 50s linear infinite;

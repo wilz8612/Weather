@@ -123,6 +123,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\WeixinController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,13 +191,27 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\bg.png" />
     <Content Include="Images\foreground.png" />
+    <Content Include="Images\l2.png" />
+    <Content Include="Images\lyun.png" />
     <Content Include="Images\midground.png" />
     <Content Include="Images\w0.png" />
+    <Content Include="Images\w1.png" />
+    <Content Include="Images\w10.png" />
+    <Content Include="Images\w101.png" />
+    <Content Include="Images\w2.png" />
     <Content Include="Images\w30.png" />
+    <Content Include="Images\w31.png" />
+    <Content Include="Images\w5.png" />
+    <Content Include="Images\w6.png" />
+    <Content Include="Images\w7.png" />
+    <Content Include="Images\w77.png" />
+    <Content Include="Images\w8.png" />
+    <Content Include="Images\w9.png" />
     <Content Include="Scripts\cityList.js" />
     <Content Include="Scripts\frozen.js" />
     <Content Include="Scripts\hidpi-canvas.js" />
@@ -213,6 +228,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\rasterizeHTML.allinone.js" />
+    <Content Include="Scripts\weather.js" />
     <Content Include="Scripts\zeptoEx.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
@@ -231,6 +247,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\CitySelect.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Weather.Services\Weather.Services.csproj">
@@ -257,7 +274,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>9057</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:15117/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

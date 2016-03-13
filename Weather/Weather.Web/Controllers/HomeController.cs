@@ -12,20 +12,45 @@ namespace Weather.Web.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        public ActionResult Index(string cityCode,string cityName)
         {
+            //string cityCode = Request["cityCode"].ToString();
+            //string cityName = Request["cityName"].ToString();
+            if (!string.IsNullOrEmpty(cityCode))
+            {
+                ViewBag.CityCode = cityCode;
+                ViewBag.CityName = cityName;
+                ViewBag.NeedLocation = 0;
+            }
+            else
+            {
+                ViewBag.NeedLocation = 1;
+            }
             return View();
         }
 
         /// <summary>
-        /// 测试
+        /// 获取天气
         /// </summary>
         /// <param name="condition"></param>
         /// <returns></returns>
-        public ActionResult Test(string condition)
+        public ActionResult QueryWeather(string cityCode)
         {
-            string r = WeatherAPIService.GetWeatherData();
-            return Json(CommonService.Test());
+            WeatherModel r = WeatherAPIService.GetWeatherData(cityCode);
+            return Json(r);
+        }
+
+        public ActionResult CitySelect()
+        {
+
+            return View();
+        }
+
+
+        public ActionResult City()
+        {
+
+            return Content(CommonService.GetCityJsonStr());
         }
 
     }
