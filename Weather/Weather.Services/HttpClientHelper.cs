@@ -61,7 +61,6 @@ namespace Weather.Services
             }
             catch (Exception)
             {
-
                 return result;
             }
 

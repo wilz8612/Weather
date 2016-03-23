@@ -89,7 +89,7 @@ zepto 扩展
     }
 })(Zepto);
 (function ($) {
-    $.axse = function (url, data, successfn, errorfn) {
+    $.axse = function (url, data, successfn, errorfn, el) {
         data = (data == null || data == "" || typeof (data) == "undefined") ? { "date": new Date().getTime() } : data;
         $.ajax({
             type: "post",
@@ -97,7 +97,7 @@ zepto 扩展
             url: url,
             dataType: "json",
             success: function (d) {
-                successfn(d);
+                successfn(d, el);
             },
             error: function (e) {
                 errorfn(e);
@@ -204,7 +204,7 @@ zepto 扩展
         //    // cityinput.append("<span class='cancel input-group-btn' > <button id='cancel' type='button' class='btn btn-info' >取消</button></span>");
         //    suggestMain.show();
         //})
-
+        resetPosition();
         input.click(function () {
             city_container.empty();
             input.focus();
@@ -280,7 +280,23 @@ zepto 扩展
             //options.onSelect();
         }
 
+        function resetPosition() {
 
+            //解决bootstarp中弹出层不兼容的bug
+
+            if (input.offset().top == 0 && $('#txtCityName').parent().offset() != undefined) {
+                var topP = $('#txtCityName').parent().position().top;
+                var leftP = $('#txtCityName').parent().position().left;
+                suggestMain.css('top', topP + input.height() + 1);
+            }
+            else {
+
+                suggestMain.css('top', input.offset().top + input.height() + 1);
+            }
+
+
+
+        }
     }
     $.fn.querycity = function (options) {
         var defaults = {

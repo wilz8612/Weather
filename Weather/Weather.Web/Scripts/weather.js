@@ -71,11 +71,11 @@ function drawChart(canvasId, maxArr, minArr, dateArr, weekArr, sixw) {
 
     //画线
     c.strokeStyle = "rgba(255,255,255,0.3)";
-    c.moveTo(x + step * 0.5, 25);
-    c.lineTo(x + step * 0.5, 700);
-    c.stroke();
-    c.beginPath();
-    for (var i = 1; i <= 3; i++) {
+    //c.moveTo(x + step * 0.5, 25);
+    //c.lineTo(x + step * 0.5, 700);
+    //c.stroke();
+    // c.beginPath();
+    for (var i = 0; i < 4; i++) {
         c.moveTo(x + step * 0.5 + step * i, 25);
         c.lineTo(x + step * 0.5 + step * i, 700);
         c.stroke();
@@ -130,7 +130,6 @@ function drawChart(canvasId, maxArr, minArr, dateArr, weekArr, sixw) {
     for (var i = 0; i < 5; i++) {
         (function (i) {
             m[i] = new Image();
-            // m[i].src = "/Images/w30.png";
             var w = WeaherList.findSingle(sixw[i].fb);
             if (typeof (w) == 'undefined')
                 m[i].src = "/Images/w30.png";
@@ -278,7 +277,7 @@ var getLocation = {
             dataType: "jsonp",
             jsonp: "callback",
             success: function (data) {
-                console.log(data);
+
                 var province = data.result.addressComponent.province;
                 var cityname = (data.result.addressComponent.city);
                 var district = data.result.addressComponent.district;

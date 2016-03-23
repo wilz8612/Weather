@@ -24,12 +24,17 @@ namespace Weather.Services
         public static WeatherModel GetWeatherData(string areaId = "101010100")
         {
             var enc = Encoding.UTF8;
-            var date = DateTime.Now.ToString("yyyyMMddHHmm");
+            var date = DateTime.Now;//ToString("yyyyMMddHHmm");
+            string queryDate = string.Empty;
+            //if (date.Hour >= 18)
+            //    queryDate = date.AddDays(-1).ToString("yyyyMMdd10mm");//date.ToString("yyyyMMdd11mm");
+            //else
+            queryDate = date.ToString("yyyyMMddhhmm");
             HMACSHA1 hmac = new HMACSHA1(enc.GetBytes(key));
             hmac.Initialize();
-            byte[] buffer = enc.GetBytes(Weaher_APIPath + "?areaid=" + areaId + "&type=forecast5d&date=" + date + "&appid=" + appid);
+            byte[] buffer = enc.GetBytes(Weaher_APIPath + "?areaid=" + areaId + "&type=forecast5d&date=" + queryDate + "&appid=" + appid);
             string k = System.Web.HttpUtility.UrlEncode(Convert.ToBase64String(hmac.ComputeHash(buffer)));
-            var m = HttpClientHelper.GetResponse<WeatherModel>(Weaher_APIPath + "?areaid=" + areaId + "&type=forecast5d&date=" + date + "&appid=" + appid.Substring(0, 6) + "&key=" + k);
+            var m = HttpClientHelper.GetResponse<WeatherModel>(Weaher_APIPath + "?areaid=" + areaId + "&type=forecast5d&date=" + queryDate + "&appid=" + appid.Substring(0, 6) + "&key=" + k);
             return m;
         }
 

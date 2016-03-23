@@ -15,8 +15,8 @@
     <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
 
-    <link href="~/Content/donghua.css" rel="stylesheet" />
-    <link href="~/Content/lxcss.css" rel="stylesheet" />
+    <link href="/Content/donghua.css" rel="stylesheet" />
+    <link href="/Content/lxcss.css" rel="stylesheet" />
     <title>天气颜值</title>
     <style type="text/css">
         body {
@@ -152,8 +152,8 @@
                 <div class="circle center-block">
 
                     <dl class="fontwhiter text-center vectalgin">
-                        <dt><span class="lx_fs64">13</span>℃</dt>
-                        <dt><span class="lx_fs24">霾</span></dt>
+                        <dt><span id="nowtmp" class="lx_fs64"></span>℃</dt>
+                        <dt><span id="nowdesc" class="lx_fs24"></span></dt>
                         <dt><span class="lx_fs18">湿度45%</span></dt>
                     </dl>
 
@@ -174,8 +174,8 @@
                         <div class="col-xs-9 lx_pda0">
                             <dl class="fontwhiter lx_mgl5">
                                 <dt><span>今天</span></dt>
-                                <dt><span id="todayIcoAm" class="ion-ios-infinite-outline lx_fs32 valgin"></span><span id="todayIcoPm" class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span id="todayTmp" class="valgin">4/11℃</span></dt>
-                                <dt><span id="todyDesc">霾转晴</span></dt>
+                                <dt><span id="todayIcoAm" class="ion-ios-infinite-outline lx_fs32 valgin"></span><span id="todayIcoPm" class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span id="todayTmp" class="valgin"></span></dt>
+                                <dt><span id="todyDesc"></span></dt>
                             </dl>
                         </div>
                         <div class="col-xs-3">
@@ -188,8 +188,8 @@
                         <div class="col-xs-9 lx_pda0">
                             <dl class="fontwhiter lx_mgl5">
                                 <dt><span>明天</span></dt>
-                                <dt><span id="tomIcoAm" class="ion-ios-infinite-outline lx_fs32 valgin"></span><span id="tomIcoPm" class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span id="tomTmp" class="valgin">4/11℃</span></dt>
-                                <dt><span id="tomDesc">霾转晴</span></dt>
+                                <dt><span id="tomIcoAm" class="ion-ios-infinite-outline lx_fs32 valgin"></span><span id="tomIcoPm" class="ion-ios-moon lx_fs32 lx_mga5 valgin"></span><span id="tomTmp" class="valgin"></span></dt>
+                                <dt><span id="tomDesc"></span></dt>
                             </dl>
                         </div>
                         <div class="col-xs-3">
@@ -354,8 +354,8 @@
     });
 
     function getAreaID(cityname) {
-        for (var i = 0; i < cityList.length; i++) {
-            var item = cityList[i];
+        for (var i = 0; i < cityList.CityList.length; i++) {
+            var item = cityList.CityList[i];
             if (item.NameCn == cityname)
                 return item.AreaID;
         }
@@ -363,8 +363,8 @@
 
     function init() {
         var cityCode = "101010100";
-
         var needlocation = '@ViewBag.NeedLocation';
+
         if (needlocation == '1') {//需要定位
             $("#city").text("定位中...");
             getLocation.latAndLon(
@@ -372,9 +372,11 @@
 
             //data包含经纬度信息
             getLocation.cityname(data.latitude, data.longitude, function (datas) {
-                // alert(datas.cityname);
                 cityCode = getAreaID(datas.cityname.substring(0, datas.cityname.length - 1)); //str.substring(0, str.length - 1)
+
                 $("#city").text(datas.cityname);
+                queryweather(cityCode);
+                // el.zLoading("hide");
             });
         },
         function () {
@@ -383,7 +385,8 @@
                     //alert("设置默认城市成功");
                     //设置默认城市
                     $("#city").text(defaultData.cityname);
-
+                    queryweather("101010100");
+                    //   el.zLoading("hide");
                 }
             );
         }
@@ -392,17 +395,29 @@
         else {
             cityCode = '@ViewBag.CityCode';
             $("#city").text('@ViewBag.CityName');
+            queryweather(cityCode);
+            //el.zLoading("hide");
         }
 
-        var today = '@DateTime.Now.ToString("MM/dd")';
-        $.axse("/Home/QueryWeather", { "cityCode": cityCode },
-                    initWeather,
-                 function (e) { alert("出错了"); });
+        //var today = '@DateTime.Now.ToString("MM/dd")';
+        //$.axse("/Home/QueryWeather", { "cityCode": cityCode },
+        //            initWeather,
+        //         function (e) { alert("出错了"); });
     }
 
+    function queryweather(city) {
+        var el = $.zLoading({
+            content: '加载中...'
+        });
+        $.axse("/Home/QueryWeather", { "cityCode": city },
+                   initWeather,
+                function (e) {
+                    el.zLoading("hide");
+                    alert("出错了");
+                }, el);
+    }
 
-
-    var initWeather = function (data) {
+    var initWeather = function (data, el) {
 
         var dates = new Array();
         var weeks = new Array();
@@ -430,17 +445,21 @@
                 var wp = WeaherList.findSingle(item.fb);
                 if (typeof (wa) == "undefined")//白天已过期
                 {
+                    $("#nowtmp").text(item.fd);
                     $("#todyDesc").text(wp.cn);
                     $("#todayTmp").text(item.fd + "℃");
+                    $("#nowdesc").text(wp.cn);
                 }
                 else {
                     if (wa.code == wp.code) {
                         $("#todyDesc").text(wp.cn);
+                        $("#nowdesc").text(wp.cn);
                     }
                     else {
                         $("#todyDesc").text(wa.cn + "转" + wp.cn);
                     }
                     $("#todayTmp").text(item.fc + "/" + item.fd + "℃");
+                    $("#nowtmp").text(item.fc);
                 }
 
 
@@ -478,6 +497,7 @@
         });
 
         drawChart("canvas_circle", maxArr, minArr, dates, weeks, sixw);
+        el.zLoading("hide");
     }
 
 </script>
