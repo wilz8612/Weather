@@ -11,9 +11,12 @@ namespace Weather.Web.Controllers
     {
         //
         // GET: /Home/
-
-        public ActionResult Index(string cityCode,string cityName)
+        public ActionResult Index(string cityCode, string cityName)
         {
+            // var o= CommonService.Test();
+
+            var s = CommonService.GetCityJsonStr();
+
             //string cityCode = Request["cityCode"].ToString();
             //string cityName = Request["cityName"].ToString();
             if (!string.IsNullOrEmpty(cityCode))
@@ -42,7 +45,6 @@ namespace Weather.Web.Controllers
 
         public ActionResult CitySelect()
         {
-
             return View();
         }
 

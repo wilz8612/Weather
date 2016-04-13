@@ -140,9 +140,9 @@
             <div class="col-xs-6">
                 <dl style="float: right;" class="fontwhiter">
                     <dt class="hotbt10 lx_pda5 lx_mga5">
-                        <span class="ion-leaf lx_fs18" style="color: red; margin: 3px;"></span><span style="">严重污染</span></dt>
-                    <dt class="hotbt10 lx_pda5 lx_mga5"><span class="glyphicon glyphicon-cloud" style="color: yellow; margin: 3px;"></span><span>霾预警</span></dt>
-                    <dt class="text-center"><span class="ion-social-snapchat" style="color: red; font-size: 48px;"></span></dt>
+                        <span class="ion-leaf lx_fs18" style="color: indianred; margin: 3px;"></span><span style="">严重污染</span></dt>
+                    <dt class="hotbt10 lx_pda5 lx_mga5"><span class="glyphicon glyphicon-cloud" style="color:goldenrod; margin: 3px;"></span><span>霾预警</span></dt>
+                    <dt class="text-center"><span class="ion-social-snapchat" style="color:indianred; font-size: 48px;"></span></dt>
                 </dl>
 
             </div>
@@ -179,7 +179,7 @@
                             </dl>
                         </div>
                         <div class="col-xs-3">
-                            <span id="todayAir" class="ion-leaf lx_mgt0 lx_mgr5 lx_fs32" style="color: red; float: right"></span>
+                            <span id="todayAir" class="ion-leaf lx_mgt0 lx_mgr5 lx_fs32" style="color:goldenrod; float: right"></span>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                             </dl>
                         </div>
                         <div class="col-xs-3">
-                            <span id="tomAir" class="ion-leaf lx_mgt0 lx_fs32" style="color: red; float: right"></span>
+                            <span id="tomAir" class="ion-leaf lx_mgt0 lx_fs32" style="color:darkgreen; float: right"></span>
                         </div>
                     </div>
                 </div>
@@ -412,7 +412,7 @@
         $.axse("/Home/QueryWeather", { "cityCode": city },
                    initWeather,
                 function (e) {
-                    el.zLoading("hide");
+                   // el.zLoading("hide");
                     alert("出错了");
                 }, el);
     }
@@ -497,7 +497,7 @@
         });
 
         drawChart("canvas_circle", maxArr, minArr, dates, weeks, sixw);
-        el.zLoading("hide");
+       // el.zLoading("hide");
     }
 
 </script>

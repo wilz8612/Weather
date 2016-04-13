@@ -1,0 +1,284 @@
+﻿@model Weather.Members.Member
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Content/lxcss.css" rel="stylesheet" />
+
+    <title>天气颜值</title>
+    <style type="text/css">
+        body {
+            font-family: "微软雅黑" Arial, Helvetica, sans-serif,"FontAwesome";
+            /*此部分支持chrome，应该也支持firefox*/
+            /*background: url(/Images/bg.png);*/
+            background-color: #26739D;
+            /*padding-top: 20px;*/
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+            background-size: cover;
+            /*-webkit-animation: STAR-MOVE 200s linear infinite;
+            -moz-animation: STAR-MOVE 200s linear infinite;
+            -ms-animation: STAR-MOVE 200s linear infinite;
+            animation: STAR-MOVE 200s linear infinite;*/
+            /*background: url(/Images/bg.jpg) no-repeat center fixed;*/
+            /*background-attachment: fixed;
+            background-size: 100% 100%;*/
+        }
+
+        .showBox {
+            display: -webkit-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+        .fontwhiter {
+            color: white;
+        }
+
+        .font18 {
+            font-size: 18px;
+        }
+
+        .hotbt {
+            background: rgba(0,0,0,0.2) !important;
+            background: #000;
+        }
+
+        .hotbt10 {
+            background: rgba(0,0,0,0.3) !important;
+            background: #000;
+            /*filter: Alpha(opacity=20);*/
+            border-radius: 20px 20px 20px 20px;
+            color: #FFFFFF;
+        }
+
+        .hotbt20 {
+            background: rgba(0,0,0,0.3) !important;
+            background: #000;
+            /*filter: Alpha(opacity=20);*/
+            border-radius: 20px 20px 20px 20px;
+            color: #FFFFFF;
+        }
+
+        .hotbt30 {
+            background: rgba(0,0,0,0.3) !important;
+            background: #000;
+            /*filter: Alpha(opacity=20);*/
+            border-radius: 20px 20px 20px 20px;
+            color: #FFFFFF;
+        }
+
+
+
+        .hotbd {
+            border: 1px solid #fbaeab;
+        }
+
+        .circle {
+            background: rgba(0,0,0,0.2) !important;
+            background: #000;
+            /*width: 400px;
+            height: 400px;
+            border-radius: 200px;*/
+            /*filter: alpha(opacity=50);*/
+            /*opacity: 0.5;*/
+            /*border: solid rgb(100,100,100) 1px;*/
+        }
+
+        .vectalgin {
+            position: relative;
+            top: 50%;
+            /*transform: translateY(-50%);*/
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        .valgin {
+            vertical-align: middle;
+        }
+
+        #canvas_circle {
+            /*position: absolute;
+            padding: 0px;
+            margin: 0px;
+            border: solid white 1px;*/
+            background: rgba(0,68,100,0.7) !important;
+            background: #000;
+        }
+
+        .sh {
+            background: rgba(0,85,120,0.6) !important;
+            background: #000;
+        }
+    </style>
+
+    <title>会员中心</title>
+</head>
+<body style="background-color:#eeeeee;">
+    <div class="container-fluid">
+        <div class="row lx_mgt0" style="background-color:cadetblue">
+            <div class="col-xs-4">
+            </div>
+            <div class="col-xs-4 text-center">
+                <dl class="fontwhiter lx_pdt5">
+                    <dt class="text-center"><img src="@Model.Headimgurl" width="60" height="60" class="img-circle" /></dt>
+                    <dt class="text-center">
+                        <span>@Model.NickName</span>
+                    </dt>
+                </dl>
+
+            </div>
+            <div class="col-xs-4 text-right lx_pdt5">
+                <a id="set" href="###">
+                    <span class="glyphicon glyphicon-cog fontwhiter"></span>
+                    <span class="fontwhiter">设置</span>
+                </a>
+            </div>
+        </div>
+        <div class="row lx_mgt5 lx_pdtb5" style="background-color:white;">
+            <div class="col-xs-4 text-center lx_bdrb1">
+                <dl class="lx_mgt10">
+                    <dt class="text-center"><span class="glyphicon glyphicon-piggy-bank font18" style="color:darkslateblue;"></span></dt>
+                    <dt class="text-center">
+                        <span>积分</span>
+                    </dt>
+                </dl>
+            </div>
+            <div class="col-xs-4 text-center lx_bdrb1">
+                <dl class="lx_mgt10">
+                    <dt class="text-center"><span class="glyphicon glyphicon-star font18" style="color:darkcyan;"></span></dt>
+                    <dt class="text-center">
+                        <span>收藏</span>
+                    </dt>
+
+                </dl>
+
+            </div>
+            <div class="col-xs-4 text-center">
+                <dl class="lx_mgt10">
+                    <dt class="text-center"><i class="fa fa-arrow-circle-right font18" style="color:chocolate;"></i></dt>
+                    <dt class="text-center">
+                        <span>其他</span>
+                    </dt>
+
+                </dl>
+            </div>
+        </div>
+        <div class="row lx_mgt10" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="fa fa-file-powerpoint-o font18" style="color:blueviolet;"></i>
+            </div>
+            <div class="col-xs-8 lx_bdbb1">
+                <span>我的积分</span>
+            </div>
+            <div class="col-xs-2 text-right lx_bdbb1">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+
+        </div>
+        <div class="row" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="fa fa-gift font18" style="color:brown;"></i>
+            </div>
+            <div class="col-xs-8 ">
+                <span>我的优惠券</span>
+
+            </div>
+            <div class="col-xs-2 text-right">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+        </div>
+        <div class="row lx_mgt10" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="fa fa-sign-in" style="color:coral;font-size:20px;"></i>
+            </div>
+            <div class="col-xs-8 lx_bdbb1">
+                <span>每日签到</span>
+
+            </div>
+            <div class="col-xs-2 text-right lx_bdbb1">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+        </div>
+        <div class="row" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="fa fa-gamepad font18" style="color:goldenrod;"></i>
+            </div>
+            <div class="col-xs-8">
+                <span>积分游戏</span>
+            </div>
+            <div class="col-xs-2 text-right">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+        </div>
+
+
+        <div class="row lx_mgt10" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="glyphicon glyphicon-list-alt font18" style="color:mediumseagreen;"></i>
+            </div>
+            <div class="col-xs-8 lx_bdbb1">
+                <span>我的订单</span>
+
+            </div>
+            <div class="col-xs-2 text-right lx_bdbb1">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+        </div>
+        <div class="row" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="fa fa-home font18" style="color:crimson;"></i>
+            </div>
+            <div class="col-xs-8 lx_bdbb1">
+                <span>收货地址</span>
+
+            </div>
+            <div class="col-xs-2 text-right lx_bdbb1">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+        </div>
+        <div class="row" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="fa fa-sitemap font18" style="color:darkorchid;"></i>
+            </div>
+            <div class="col-xs-8 lx_bdbb1">
+                <span>物流查询</span>
+
+            </div>
+            <div class="col-xs-2 text-right lx_bdbb1">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+        </div>
+        <div class="row" style="background-color:white;line-height:40px">
+            <div class="col-xs-2 text-center">
+                <i class="fa fa-comment font18" style="color:lawngreen;"></i>
+            </div>
+            <div class="col-xs-8">
+                <span>帮助中心</span>
+
+            </div>
+            <div class="col-xs-2 text-right">
+                <i class="fa fa-angle-right font18" style="color:darkgrey"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

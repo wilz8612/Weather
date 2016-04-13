@@ -40,6 +40,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="App, Version=0.4.0.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\App.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Services, Version=0.4.0.45, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\App.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="InfoLeader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\InfoLeader.dll</HintPath>
+    </Reference>
+    <Reference Include="InfoLeader.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Bin\InfoLeader.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -123,15 +139,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Member\MemberController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\CheckLoginAttribute .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\readMe.txt" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\donghua.css" />
     <Content Include="Content\frozen.css" />
     <Content Include="Content\lxcss.css" />
@@ -193,12 +213,23 @@
     <Content Include="Content\Site.css" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\aa.png" />
     <Content Include="Images\bg.jpg" />
     <Content Include="Images\bg.png" />
+    <Content Include="Images\btn_sure.png" />
+    <Content Include="Images\detail_declare_bg.png" />
+    <Content Include="Images\dialog_bg.png" />
     <Content Include="Images\foreground.png" />
+    <Content Include="Images\guaguaka_bg.png" />
+    <Content Include="Images\guaguaka_word.png" />
+    <Content Include="Images\gua_image.png" />
+    <Content Include="Images\ka.png" />
     <Content Include="Images\l2.png" />
     <Content Include="Images\lyun.png" />
     <Content Include="Images\midground.png" />
+    <Content Include="Images\notice_bg.png" />
+    <Content Include="Images\people.png" />
+    <Content Include="Images\shoubiao.png" />
     <Content Include="Images\w0.png" />
     <Content Include="Images\w1.png" />
     <Content Include="Images\w10.png" />
@@ -212,6 +243,7 @@
     <Content Include="Images\w77.png" />
     <Content Include="Images\w8.png" />
     <Content Include="Images\w9.png" />
+    <Content Include="Images\xianglian.png" />
     <Content Include="Scripts\cityList.js" />
     <Content Include="Scripts\frozen.js" />
     <Content Include="Scripts\hidpi-canvas.js" />
@@ -219,6 +251,7 @@
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -248,16 +281,24 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CitySelect.cshtml" />
+    <Content Include="Views\Game\GameGift.cshtml" />
+    <Content Include="Views\Member\Login.cshtml" />
+    <Content Include="Views\Member\MemberCenter.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Weather.Services\Weather.Services.csproj">
       <Project>{88706a43-0544-4444-aab9-f798eb90679f}</Project>
       <Name>Weather.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Weather\Weather.csproj">
+      <Project>{60293f39-d94c-496b-ad67-1befcba01dc3}</Project>
+      <Name>Weather</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -111,7 +111,7 @@ function drawChart(canvasId, maxArr, minArr, dateArr, weekArr, sixw) {
         c.fillText(maxArr[i] + "℃", x + step * i, y - 12);
         c.lineTo(x + step * i, y);
     }
-    c.strokeStyle = "#ff4444";
+    c.strokeStyle = "#44BB5C";
     c.stroke();
     //绘制最低温度
 
@@ -142,7 +142,7 @@ function drawChart(canvasId, maxArr, minArr, dateArr, weekArr, sixw) {
     c.stroke();
 
     //绘制点
-    c.fillStyle = "ff4444";
+    c.fillStyle = "#44BB5C";
     c.beginPath();
     for (var i = 0; i < 5; i++) {
         c.moveTo(x + step * i, transH(maxArr[i], maxHighTemp, minLowTemp));

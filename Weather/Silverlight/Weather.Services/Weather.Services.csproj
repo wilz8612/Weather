@@ -56,8 +56,8 @@
     <Compile Include="..\..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="..\..\Weather.Services\CommonService.client.cs">
-      <Link>CommonService.client.cs</Link>
+    <Compile Include="..\..\Weather.Services\Common\CommonService.client.cs">
+      <Link>Common\CommonService.client.cs</Link>
     </Compile>
     <Compile Include="..\..\Weather.Services\SR.cs">
       <Link>SR.cs</Link>

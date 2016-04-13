@@ -496,7 +496,7 @@
 }
 
 .lx_bdtb1 {
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(220,220,220,0.4);
 }
 
 
@@ -517,7 +517,8 @@
 }
 
 .lx_bdbb1 {
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(220,220,220,0.4);
+    
 }
 
 
@@ -554,7 +555,7 @@
 }
 
 .lx_bdrb1 {
-    border-right: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(220,220,220,0.4);
 }
 
 .lx_bdr2 {

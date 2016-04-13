@@ -1,0 +1,27 @@
+﻿<definition xmlns="http://schemas.techcreate.net/ax/2009/resource">
+  <imports>
+    <import>System</import>
+    <import>App.Data</import>
+  </imports>
+  <namespace name="Weather.Members">
+    <type name="Member" base="App.Resources.Actor" caption="会员">
+      <properties>
+        <property name="NickName" type="string" caption="昵称" allowNull="True" default="" />
+        <property name="Name" type="string" caption="真实姓名" allowNull="True" default="" />
+        <property name="Code" type="string" caption="编号" />
+        <property name="Mobile" type="string" caption="手机号" />
+        <property name="Email" type="string" caption="邮箱" />
+        <property name="Sex" type="int" caption="性别" allowNull="False" default="0"/>
+        <property name="Country" type="string" caption="国家" />
+        <property name="Province" type="string" caption="省" />
+        <property name="City" type="string" caption="城市" />
+        <property name="Headimgurl" type="string" default="/Images/people.png" caption="会员头像" allowNull="False"/>
+        <!--积分-->
+        <property name="PointsValueConsume" type="int" caption="已兑换积分" description="消耗积分" />
+        <property name="PointsValueTotal" type="int" caption="总积分" description="总积分" />
+        <property name="Description" type="string" length="2000" caption.zh-CN="描述" />
+        <property name="WxOpenID" type="string" caption="微信OpenID" description="微信OpenID" allowNull="True" />
+      </properties>
+    </type>
+  </namespace>
+</definition>

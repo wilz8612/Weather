@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,6 +23,25 @@ namespace Weather.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ServiceEnvironment.SetApplication(new WebApplication());
+
+            ServiceRuntime.Instance.Start();
+        }
+        void Application_End(Object sender, EventArgs e)
+        {
+            ServiceRuntime.Instance.Stop();
+        }
+
+        class WebApplication : ServiceApplication
+        {
+            public override ServiceHostingType HostingType
+            {
+                get
+                {
+                    return ServiceHostingType.Web;
+                }
+            }
         }
     }
 }
