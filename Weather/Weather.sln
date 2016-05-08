@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0508F03A-1A22-465C-A008-7A73DED39A52}"
 	ProjectSection(SolutionItems) = preProject
 		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
@@ -29,10 +31,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bin", "Bin", "{D714FD2E-7CD
 		Bin\App.Data.MySqlClient.dll = Bin\App.Data.MySqlClient.dll
 		Bin\App.dll = Bin\App.dll
 		Bin\App.Services.dll = Bin\App.Services.dll
-		D:\WorkDir\hbx\Source\commondll\Auto.Log.FileLog.dll = D:\WorkDir\hbx\Source\commondll\Auto.Log.FileLog.dll
+		..\..\WorkDir\hbx\Source\commondll\Auto.Log.FileLog.dll = ..\..\WorkDir\hbx\Source\commondll\Auto.Log.FileLog.dll
 		Bin\InfoLeader.dll = Bin\InfoLeader.dll
 		Bin\InfoLeader.Web.dll = Bin\InfoLeader.Web.dll
 		Bin\MySql.Data.dll = Bin\MySql.Data.dll
+		Bin\Newtonsoft.Json.dll = Bin\Newtonsoft.Json.dll
+		Bin\NPOI.dll = Bin\NPOI.dll
+		Bin\NPOI.OOXML.dll = Bin\NPOI.OOXML.dll
+		Bin\NPOI.OpenXml4Net.dll = Bin\NPOI.OpenXml4Net.dll
+		Bin\NPOI.OpenXmlFormats.dll = Bin\NPOI.OpenXmlFormats.dll
 		Bin\tools.exe = Bin\tools.exe
 		Bin\tools.exe.config = Bin\tools.exe.config
 	EndProjectSection
