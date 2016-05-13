@@ -28,6 +28,7 @@ namespace Weather.Web.Controllers
                     this.LoginMember = dc.SelectOne<Member>(r => r.Key == dc.User.Actor.Key);
                     this.LoginUser = dc.User;
                 }
+               
             }
         }
 
@@ -41,7 +42,6 @@ namespace Weather.Web.Controllers
             {
                 OAuth_Token token = WeiXinHelper.Get_token(code);
                 OAuthUser OAuthUser_Model = WeiXinHelper.Get_UserInfo(token.access_token, token.openid);
-
 
                 LogHelper.WriteLog("openID：" + OAuthUser_Model.openid);
                 LogHelper.WriteLog("判断用户是否绑定微信开始");
@@ -63,11 +63,11 @@ namespace Weather.Web.Controllers
                     if (UserService.ResiterUser(dc, member))//授权注册成功
                     {
                         LogHelper.WriteLog("用户授权注册成功！");
-                        if (UserService.SignIn(dc, member.WxOpenID,"111111"))//登录一次
+                        if (UserService.SignIn(dc, member.WxOpenID, "111111"))//登录一次
                         {
                             LogHelper.WriteLog("用户登录成功！");
                             this.LoginMember = dc.SelectOne<Member>(r => r.WxOpenID == member.WxOpenID);
-                           // this.LoginUser = dc.User;
+                            //this.LoginUser = dc.User;
                             return true;
                         }
                         else
@@ -85,7 +85,7 @@ namespace Weather.Web.Controllers
                 else//授权绑定过 直接登录
                 {
                     if (UserService.SignIn(dc, member.WxOpenID, "111111"))//openID直接登录
-                    { 
+                    {
                         LogHelper.WriteLog("用户直接登录成功！");
                         //if (Resource.IsNullOrEmpty(dc.Session.User))
                         //{

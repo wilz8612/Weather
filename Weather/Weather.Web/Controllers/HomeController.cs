@@ -15,7 +15,7 @@ namespace Weather.Web.Controllers
         {
             // var o= CommonService.Test();
 
-            var s = CommonService.GetCityJsonStr();
+            //var s = CommonService.GetCityJsonStr();
 
             //string cityCode = Request["cityCode"].ToString();
             //string cityName = Request["cityName"].ToString();
