@@ -36,6 +36,15 @@
         <Order>800</Order>
         <Url>/ScratchPrizeRulePage</Url>
       </Resource>
+      <Resource>
+        <Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
+        <Name>
+          <Invariant>WeatherBackgroud</Invariant>
+          <zh-CN>背景图</zh-CN>
+        </Name>
+        <Order>1000</Order>
+        <Url>/WeatherBackgroudPage</Url>
+      </Resource>
       
 			<Resource>
 				<Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
