@@ -62,29 +62,11 @@
     <Compile Include="..\..\Weather\Resources\Members\Member.rsdl.g.cs">
       <Link>Resources\Members\Member.rsdl.g.cs</Link>
     </Compile>
-    <Compile Include="..\..\Weather\Resources\Point.rsdl.cs">
-      <Link>Resources\Point.rsdl.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Weather\Resources\Point.rsdl.g.cs">
-      <Link>Resources\Point.rsdl.g.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Weather\Resources\PointPulsRecord.rsdl.cs">
-      <Link>Resources\PointPulsRecord.rsdl.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Weather\Resources\PointPulsRecord.rsdl.g.cs">
-      <Link>Resources\PointPulsRecord.rsdl.g.cs</Link>
-    </Compile>
     <Compile Include="..\..\Weather\Resources\PointRecord.rsdl.cs">
       <Link>Resources\PointRecord.rsdl.cs</Link>
     </Compile>
     <Compile Include="..\..\Weather\Resources\PointRecord.rsdl.g.cs">
       <Link>Resources\PointRecord.rsdl.g.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Weather\Resources\Resource1.rsdl.cs">
-      <Link>Resources\Resource1.rsdl.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Weather\Resources\Resource1.rsdl.g.cs">
-      <Link>Resources\Resource1.rsdl.g.cs</Link>
     </Compile>
     <Compile Include="..\..\Weather\Resources\ScratchPrizeRule.rsdl.cs">
       <Link>Resources\ScratchPrizeRule.rsdl.cs</Link>
@@ -92,26 +74,16 @@
     <Compile Include="..\..\Weather\Resources\ScratchPrizeRule.rsdl.g.cs">
       <Link>Resources\ScratchPrizeRule.rsdl.g.cs</Link>
     </Compile>
-    <Compile Include="..\..\Weather\Resources\SystemConfig.rsdl.cs">
-      <Link>Resources\SystemConfig.rsdl.cs</Link>
+    <Compile Include="..\..\Weather\Resources\WeatherBackgroud.rsdl.cs">
+      <Link>Resources\WeatherBackgroud.rsdl.cs</Link>
     </Compile>
-    <Compile Include="..\..\Weather\Resources\SystemConfig.rsdl.g.cs">
-      <Link>Resources\SystemConfig.rsdl.g.cs</Link>
+    <Compile Include="..\..\Weather\Resources\WeatherBackgroud.rsdl.g.cs">
+      <Link>Resources\WeatherBackgroud.rsdl.g.cs</Link>
     </Compile>
     <Compile Include="..\..\Weather\SR.cs">
       <Link>SR.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\Weather\Resources\Resource1.rsdl">
-      <Link>Resources\Resource1.rsdl</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\Weather\Resources\SystemConfig.rsdl">
-      <Link>Resources\SystemConfig.rsdl</Link>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\..\Weather\Resources\Members\Member.rsdl">
@@ -122,21 +94,6 @@
     <Folder Include="Resources\Member\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="..\..\Weather\Resources\Point.rsdl">
-      <Link>Resources\Point.rsdl</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\Weather\Resources\PointPulsRecord.rsdl">
-      <Link>Resources\PointPulsRecord.rsdl</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\..\Weather\Resources\PointExpendRecord.rsdl">
-      <Link>Resources\PointExpendRecord.rsdl</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="..\..\Weather\Resources\PointRecord.rsdl">
       <Link>Resources\PointRecord.rsdl</Link>
     </EmbeddedResource>
@@ -144,6 +101,11 @@
   <ItemGroup>
     <EmbeddedResource Include="..\..\Weather\Resources\ScratchPrizeRule.rsdl">
       <Link>Resources\ScratchPrizeRule.rsdl</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Weather\Resources\WeatherBackgroud.rsdl">
+      <Link>Resources\WeatherBackgroud.rsdl</Link>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

@@ -63,6 +63,12 @@
     <Compile Include="Resources\ScratchPrizeRule.rsdl.g.cs">
       <DependentUpon>ScratchPrizeRule.rsdl</DependentUpon>
     </Compile>
+    <Compile Include="Resources\WeatherBackgroud.rsdl.cs">
+      <DependentUpon>WeatherBackgroud.rsdl</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\WeatherBackgroud.rsdl.g.cs">
+      <DependentUpon>WeatherBackgroud.rsdl</DependentUpon>
+    </Compile>
     <Compile Include="SR.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,6 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ScratchPrizeRule.rsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\WeatherBackgroud.rsdl" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

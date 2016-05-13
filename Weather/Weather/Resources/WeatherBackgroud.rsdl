@@ -1,0 +1,19 @@
+﻿<definition xmlns="http://schemas.techcreate.net/ax/2009/resource">
+	<imports>
+		<import>System</import>
+		<import>App.Data</import>
+	</imports>
+	<namespace name="Weather.Resources">
+		<type name="WeatherBackgroud" caption="背景图">
+			<properties>
+        <property name="AvilableTime" type="AvilableTime" caption="适用于" allowNull="False" default="Day"/>
+				<property name="Name" type="string" caption="名称" allowNull="False" />
+				<property name="Path" type="string" length="2000" caption="图片路径" allowNull="False" />
+			</properties>
+		</type>
+    <enum name="AvilableTime" caption="适用时间">
+      <item value="0" name="Day" caption="白天"/>
+      <item value="1" name="Night" caption="黑天"/>
+    </enum>
+	</namespace>
+</definition>
