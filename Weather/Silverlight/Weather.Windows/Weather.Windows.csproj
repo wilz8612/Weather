@@ -53,6 +53,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="App, Version=0.4.0.46, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SilverlightBin\App.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Services, Version=0.4.0.46, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SilverlightBin\App.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="App.Windows, Version=0.4.0.46, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SilverlightBin\App.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
@@ -107,11 +119,11 @@
   <ItemGroup>
     <ProjectReference Include="..\Weather.Services\Weather.Services.csproj">
       <Project>{463ED21F-C314-4869-9A1F-D2A602BE778E}</Project>
-      <Name>Weather.Services %28Silverlight\Weather.Services%29</Name>
+      <Name>Weather.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Weather\Weather.csproj">
       <Project>{F5EC5BF3-8FD5-438F-9A4B-73319324E912}</Project>
-      <Name>Weather %28Silverlight\Weather%29</Name>
+      <Name>Weather</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

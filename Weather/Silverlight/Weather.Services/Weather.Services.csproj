@@ -67,7 +67,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Weather\Weather.csproj">
       <Project>{F5EC5BF3-8FD5-438F-9A4B-73319324E912}</Project>
-      <Name>Weather %28Silverlight\Weather%29</Name>
+      <Name>Weather</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />

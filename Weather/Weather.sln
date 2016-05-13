@@ -44,6 +44,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bin", "Bin", "{D714FD2E-7CD
 		Bin\tools.exe.config = Bin\tools.exe.config
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SilverlightBin", "SilverlightBin", "{8C194BA9-B6EE-4148-B0E2-E92B4E2E0531}"
+	ProjectSection(SolutionItems) = preProject
+		SilverlightBin\App.dll = SilverlightBin\App.dll
+		SilverlightBin\App.Services.dll = SilverlightBin\App.Services.dll
+		SilverlightBin\App.Windows.dll = SilverlightBin\App.Windows.dll
+		..\..\18HSX\hsx\SilverlightBin\DevExpress.AgMenu.v9.2.dll = ..\..\18HSX\hsx\SilverlightBin\DevExpress.AgMenu.v9.2.dll
+		..\..\18HSX\hsx\SilverlightBin\Divelements.SilverlightTools.dll = ..\..\18HSX\hsx\SilverlightBin\Divelements.SilverlightTools.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
