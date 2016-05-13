@@ -51,22 +51,19 @@
     <Compile Include="Resources\Members\Member.rsdl.g.cs">
       <DependentUpon>Member.rsdl</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Resource1.rsdl.cs">
-      <DependentUpon>Resource1.rsdl</DependentUpon>
+    <Compile Include="Resources\PointRecord.rsdl.cs">
+      <DependentUpon>PointRecord.rsdl</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Resource1.rsdl.g.cs">
-      <DependentUpon>Resource1.rsdl</DependentUpon>
+    <Compile Include="Resources\PointRecord.rsdl.g.cs">
+      <DependentUpon>PointRecord.rsdl</DependentUpon>
     </Compile>
-    <Compile Include="Resources\SystemConfig.rsdl.cs">
-      <DependentUpon>SystemConfig.rsdl</DependentUpon>
+    <Compile Include="Resources\ScratchPrizeRule.rsdl.cs">
+      <DependentUpon>ScratchPrizeRule.rsdl</DependentUpon>
     </Compile>
-    <Compile Include="Resources\SystemConfig.rsdl.g.cs">
-      <DependentUpon>SystemConfig.rsdl</DependentUpon>
+    <Compile Include="Resources\ScratchPrizeRule.rsdl.g.cs">
+      <DependentUpon>ScratchPrizeRule.rsdl</DependentUpon>
     </Compile>
     <Compile Include="SR.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Resource1.rsdl" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Strings.resx" />
@@ -75,10 +72,13 @@
     <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\SystemConfig.rsdl" />
+    <EmbeddedResource Include="Resources\Members\Member.rsdl" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Members\Member.rsdl" />
+    <EmbeddedResource Include="Resources\PointRecord.rsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ScratchPrizeRule.rsdl" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

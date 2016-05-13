@@ -9,6 +9,34 @@
 				<Url>/DesktopPage</Url>
 				<Order>100</Order>
 			</Resource>
+      <Resource>
+        <Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
+        <Name>
+          <Invariant>Members</Invariant>
+          <zh-CN>会员管理</zh-CN>
+        </Name>
+        <Order>200</Order>
+        <Url>/MemberPage</Url>
+      </Resource>
+      <Resource>
+        <Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
+        <Name>
+          <Invariant>PointRecord</Invariant>
+          <zh-CN>积分管理</zh-CN>
+        </Name>
+        <Order>500</Order>
+        <Url>/PointRecordPage</Url>
+      </Resource>
+      <Resource>
+        <Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
+        <Name>
+          <Invariant>ScratchPrize</Invariant>
+          <zh-CN>刮刮乐规则</zh-CN>
+        </Name>
+        <Order>800</Order>
+        <Url>/ScratchPrizeRulePage</Url>
+      </Resource>
+      
 			<Resource>
 				<Parent where="NamePath.GetValue('', false) == '.Desktop.'" />
 				<Name>

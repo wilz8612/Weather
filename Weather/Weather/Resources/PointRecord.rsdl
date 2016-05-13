@@ -1,0 +1,23 @@
+﻿<definition xmlns="http://schemas.techcreate.net/ax/2009/resource">
+	<imports>
+		<import>System</import>
+		<import>App.Data</import>
+    <import>Weather.Members</import>
+	</imports>
+	<namespace name="Weather.Resources">
+		<type name="PointRecord" caption="积分记录">
+			<properties>
+        <property name="Member" type="Member" caption="会员" allowNull="False"/>
+        <property name="PointType"  type="PointType" caption="积分类型"  default="First" allowNull="False"/>
+				<property name="PointValue" type="int" caption="积分值" allowNull="False" />
+				<property name="Description" type="string" length="2000" caption="描述" />
+			</properties>
+		</type>
+    <enum caption="积分来源" name="PointType">
+      <item name="First" value="0" caption="首次"/>
+      <item name="DaySign" value="1" caption="每日签到"/>
+      <item name="ShareSuccss" value="2" caption="分享关注"/>
+      <item name="Scratch" value="3" caption="刮刮乐"/>
+    </enum>
+	</namespace>
+</definition>

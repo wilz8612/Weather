@@ -13,6 +13,11 @@ namespace Weather.Services
         public const string Appid = "wx871db3d63f0b2e76";
         public const string appsecret = "2b5573e7a279e709ad20448affde9631";
 
+
+        public const string WeiXin_Domain = "open.weixin.qq.com";
+
+        public const string WeiXin_Api_Domain = "api.weixin.qq.com";
+
         /// <summary>
         /// 获取用户授权Token  
         /// </summary>
@@ -20,13 +25,8 @@ namespace Weather.Services
         /// <returns></returns>
         public static OAuth_Token Get_token(string Code)
         {
-            WebRequestConfig config = new WebRequestConfig()
-            {
-                ContentType = "text/html;Charset=UTF8",
-            };
-            string jsonStr = WebRequestClient.Instance.SendGet("https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + Appid + "&secret=" + appsecret + "&code=" + Code + "&grant_type=authorization_code", config, Encoding.UTF8);
-
-            OAuth_Token Oauth_Token_Model = JsonConvert.DeserializeObject<OAuth_Token>(jsonStr);//HttpClientHelper.GetResponse<OAuth_Token>("https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + Appid + "&secret=" + appsecret + "&code=" + Code + "&grant_type=authorization_code");
+        
+            OAuth_Token Oauth_Token_Model = HttpClientHelper.GetResponse<OAuth_Token>("https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + Appid + "&secret=" + appsecret + "&code=" + Code + "&grant_type=authorization_code");
             LogHelper.WriteLog("微信token：" + Oauth_Token_Model.access_token);
             return Oauth_Token_Model;
         }
@@ -39,13 +39,8 @@ namespace Weather.Services
         /// <returns></returns>
         public static OAuthUser Get_UserInfo(string TOKEN, string OPENID)
         {
-            WebRequestConfig config = new WebRequestConfig()
-            {
-                ContentType = "text/html;Charset=UTF8",
-            };
-            string jsonStr = WebRequestClient.Instance.SendGet("https://api.weixin.qq.com/sns/userinfo?access_token=" + TOKEN + "&openid=" + OPENID + "&lang=zh_CN", config, Encoding.UTF8);
-            var jsonSetting = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
-            OAuthUser OAuthUser_Model = JsonConvert.DeserializeObject<OAuthUser>(jsonStr);//HttpClientHelper.GetResponse<OAuthUser>("https://api.weixin.qq.com/sns/userinfo?access_token=" + TOKEN + "&openid=" + OPENID + "&lang=zh_CN");
+
+            OAuthUser OAuthUser_Model = HttpClientHelper.GetResponse<OAuthUser>("https://api.weixin.qq.com/sns/userinfo?access_token=" + TOKEN + "&openid=" + OPENID + "&lang=zh_CN");
             return OAuthUser_Model;
         }
     }

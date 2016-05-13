@@ -43,10 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Bin\App.Services.dll</HintPath>
     </Reference>
-    <Reference Include="Auto.Log.FileLog, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Bin\Auto.Log.FileLog.dll</HintPath>
-    </Reference>
     <Reference Include="InfoLeader, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Bin\InfoLeader.dll</HintPath>

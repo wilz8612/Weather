@@ -62,11 +62,35 @@
     <Compile Include="..\..\Weather\Resources\Members\Member.rsdl.g.cs">
       <Link>Resources\Members\Member.rsdl.g.cs</Link>
     </Compile>
+    <Compile Include="..\..\Weather\Resources\Point.rsdl.cs">
+      <Link>Resources\Point.rsdl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Weather\Resources\Point.rsdl.g.cs">
+      <Link>Resources\Point.rsdl.g.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Weather\Resources\PointPulsRecord.rsdl.cs">
+      <Link>Resources\PointPulsRecord.rsdl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Weather\Resources\PointPulsRecord.rsdl.g.cs">
+      <Link>Resources\PointPulsRecord.rsdl.g.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Weather\Resources\PointRecord.rsdl.cs">
+      <Link>Resources\PointRecord.rsdl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Weather\Resources\PointRecord.rsdl.g.cs">
+      <Link>Resources\PointRecord.rsdl.g.cs</Link>
+    </Compile>
     <Compile Include="..\..\Weather\Resources\Resource1.rsdl.cs">
       <Link>Resources\Resource1.rsdl.cs</Link>
     </Compile>
     <Compile Include="..\..\Weather\Resources\Resource1.rsdl.g.cs">
       <Link>Resources\Resource1.rsdl.g.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Weather\Resources\ScratchPrizeRule.rsdl.cs">
+      <Link>Resources\ScratchPrizeRule.rsdl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Weather\Resources\ScratchPrizeRule.rsdl.g.cs">
+      <Link>Resources\ScratchPrizeRule.rsdl.g.cs</Link>
     </Compile>
     <Compile Include="..\..\Weather\Resources\SystemConfig.rsdl.cs">
       <Link>Resources\SystemConfig.rsdl.cs</Link>
@@ -96,6 +120,31 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Member\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Weather\Resources\Point.rsdl">
+      <Link>Resources\Point.rsdl</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Weather\Resources\PointPulsRecord.rsdl">
+      <Link>Resources\PointPulsRecord.rsdl</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Weather\Resources\PointExpendRecord.rsdl">
+      <Link>Resources\PointExpendRecord.rsdl</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Weather\Resources\PointRecord.rsdl">
+      <Link>Resources\PointRecord.rsdl</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\Weather\Resources\ScratchPrizeRule.rsdl">
+      <Link>Resources\ScratchPrizeRule.rsdl</Link>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
